@@ -29,10 +29,8 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path='income' element={<Income />} />
             <Route path='reviews' element={<Reviews />} />
-            <Route path='vans'>
-              <Route index element={<HostVans />} />
-              <Route path=':id' element={<HostVanDetails />} />
-            </Route>
+            <Route path='vans' element={<HostVans />} />
+            <Route path='vans/:id' element={<HostVanDetails />} />
           </Route>
         </Route>
       </Routes>
