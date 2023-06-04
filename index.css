@@ -295,3 +295,14 @@ i[class*='van-type-'] {
     text-decoration: underline;
     font-weight: 600;
 }
+
+footer {
+    color: #AAAAAA;
+    background-color: #252525;
+    height: 70px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
