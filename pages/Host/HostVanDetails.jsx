@@ -7,11 +7,8 @@ export default function HostVanDetails() {
     useEffect(() => {
         fetch(`/api/host/vans/${params.id}`)
             .then(res => res.json())
-            .then(data => setVan(data.vans))
+            .then(data => setVan(data.vans[0]))
     }, [params.id])
-    console.log(params)
-    console.log(van)
-
 
     const activeStyles = {
         fontWeight: "bold",
@@ -19,18 +16,18 @@ export default function HostVanDetails() {
         color: "#161616"
     }
 
-//     <div>
-//     <image src={van.id} />
-//     <div>
-//         <button></button>
-//         <h3>{van.name}</h3>
-//         <p>{van.price}$<span>/day</span></p>
-//     </div>
-// </div>
+
 
     return (
         <>
-            <h1>Placeholder</h1>
+            <div>
+                <img src={van.imageUrl} />
+                <div>
+                    <button>Simple</button>
+                    <h3>{van.name}</h3>
+                    <p>{van.price}$<span>/day</span></p>
+                </div>
+            </div>
             <nav className='host-details-nav'>
                 <NavLink
                     to="/host/vans/:id"
