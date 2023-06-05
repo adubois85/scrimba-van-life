@@ -317,3 +317,34 @@ i[class*='van-type-'] {
     text-decoration: underline;
     font-weight: 600;
 }
+
+.host-van-tile {
+    height: 100px;
+    display: flex;
+    background-color: white;
+    align-items: center;
+    padding-left: 24px;
+    margin: 1rem;
+}
+
+.host-van-tile > img {
+    height: 4.25em;
+}
+
+.van-host-tile-details{
+    padding-left: 1rem;
+}
+
+.van-host-tile-details > h3 {
+    font-weight: 600;
+    font-size: 20px;
+    color: #161616;
+    margin-bottom: 0;
+}
+
+.van-host-tile-details > p {
+    font-weight: 500;
+    font-size: 16px;
+    color: #4D4D4D;
+    margin-top: .25em;
+}

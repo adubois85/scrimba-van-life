@@ -11,8 +11,10 @@ export default function HostVans() {
     const vansListings = vans.map(van => (
         <div key={van.id} className='host-van-tile'>
             <img src={van.imageUrl} />
-            <h3>{van.name}</h3>
-            <p>{van.price}</p>
+            <div className='van-host-tile-details'>
+                <h3>{van.name}</h3>
+                <p>${van.price}/day</p>
+            </div>
         </div>
     ))
 
