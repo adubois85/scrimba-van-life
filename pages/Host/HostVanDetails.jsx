@@ -23,11 +23,11 @@ export default function HostVanDetails() {
                 <div>
                     <button>Simple</button>
                     <h3>{van.name}</h3>
-                    <p>{van.price}$<span>/day</span></p>
+                    <p>${van.price}<span>/day</span></p>
                 </div>
             <nav className='host-details-nav'>
                 <NavLink
-                    to="/host/vans/:id"
+                    to={`/host/vans/${van.id}`}
                     end
                     style={({isActive}) => isActive ? activeStyles : null}
                     >

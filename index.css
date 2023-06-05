@@ -360,3 +360,10 @@ i[class*='van-type-'] {
     width: 160px;
     padding: 1rem;
 }
+
+.host-details-nav {
+    text-decoration: none;
+    color: #4D4D4D;
+    font-weight: 500;
+    padding: 5px 20px;
+}
