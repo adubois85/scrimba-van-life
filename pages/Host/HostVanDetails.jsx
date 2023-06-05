@@ -16,30 +16,27 @@ export default function HostVanDetails() {
         color: "#161616"
     }
 
-
-
     return (
         <>
-            <div>
+            <div className='host-van-detail-main'>
                 <img src={van.imageUrl} />
                 <div>
                     <button>Simple</button>
                     <h3>{van.name}</h3>
                     <p>{van.price}$<span>/day</span></p>
                 </div>
-            </div>
             <nav className='host-details-nav'>
                 <NavLink
                     to="/host/vans/:id"
                     end
                     style={({isActive}) => isActive ? activeStyles : null}
-                >
+                    >
                     Details
                 </NavLink>
                 <NavLink
                     to="/host/vans/:id/pricing"
                     style={({isActive}) => isActive ? activeStyles : null}
-                >
+                    >
                     Pricing
                 </NavLink>
                 <NavLink
@@ -50,6 +47,7 @@ export default function HostVanDetails() {
                 </NavLink>
             </nav>
             {<Outlet />}
+            </div>
         </>
     )
 }

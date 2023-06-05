@@ -348,3 +348,15 @@ i[class*='van-type-'] {
     color: #4D4D4D;
     margin-top: .25em;
 }
+
+.host-van-detail-main {
+    background-color:white;
+    margin: 2rem 1.75rem auto;
+    display: grid;
+    grid-template-columns: auto 75%;
+}
+
+.host-van-detail-main > img {
+    width: 160px;
+    padding: 1rem;
+}
