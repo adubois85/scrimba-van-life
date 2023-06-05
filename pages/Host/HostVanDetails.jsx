@@ -21,7 +21,7 @@ export default function HostVanDetails() {
             <div className='host-van-detail-main'>
                 <img src={van.imageUrl} />
                 <div>
-                    <button>Simple</button>
+                    <button>{van.type}</button>
                     <h3>{van.name}</h3>
                     <p>${van.price}<span>/day</span></p>
                 </div>

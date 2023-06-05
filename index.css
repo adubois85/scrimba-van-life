@@ -353,7 +353,7 @@ i[class*='van-type-'] {
     background-color:white;
     margin: 2rem 1.75rem auto;
     display: grid;
-    grid-template-columns: auto 75%;
+    grid-template-columns: 1fr 4fr;
 }
 
 .host-van-detail-main > img {
@@ -361,9 +361,19 @@ i[class*='van-type-'] {
     padding: 1rem;
 }
 
+.host-van-detail-main > div {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+}
+
 .host-details-nav {
     text-decoration: none;
     color: #4D4D4D;
     font-weight: 500;
     padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
