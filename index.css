@@ -422,3 +422,25 @@ i[class*='van-type-'] {
     text-decoration: underline;
     font-weight: 700;
 }
+
+.host-van-info-detail {
+    font-size: 14px;
+}
+
+.host-van-info-detail span {
+    font-weight: 700;
+}
+
+.host-van-photos {
+    width: 105px;
+}
+
+.host-van-pricing {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.host-van-pricing span {
+    font-size: 16px;
+    color: #4D4D4D;
+}
