@@ -6,7 +6,9 @@ export default function Vans() {
     const [vans, setVans] = useState([])
 
     const typeFilter = searchParams.get("type")
-    const filteredVans = vans.filter(van => van.type.toLowerCase() === typeFilter)
+    const filteredVans = typeFilter
+        ? vans.filter(van => van.type.toLowerCase() === typeFilter)
+        : vans
 
     useEffect(() => {
         fetch("/api/vans")
