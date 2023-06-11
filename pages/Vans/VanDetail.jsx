@@ -12,7 +12,7 @@ export default function VanDetail() {
             .then(data => setVan(data.vans))
     }, [params.id])
 
-    const search = location.search?.state || ""
+    const search = location.state?.search || ""
 
     return (
         <div className="van-detail-container">
@@ -20,7 +20,7 @@ export default function VanDetail() {
                 to={`..${search}`}
                 relative="path"
                 className="back-button"
-            >&larr; <span>Back to all vans</span></Link>
+            >&larr; <span>{`Back to ${search != "?" ? search.slice(6) : "all"} vans`}</span></Link>
 
             {van ? (
                 <div className="van-detail">
