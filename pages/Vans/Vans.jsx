@@ -9,8 +9,8 @@ export function loader() {
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [vans, setVans] = useState([])
-    const [loading, setLoading] = React.useState(false)
-    const [error, setError] = React.useState(null)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
     const data = useLoaderData()
     console.log(data)
 
