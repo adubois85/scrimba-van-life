@@ -32,7 +32,10 @@ export default function Vans() {
         <div key={van.id} className="van-tile">
             <Link
                 to={van.id}
-                state={{ search: `?${searchParams.toString()}` }}
+                state={{ 
+                        search: `?${searchParams.toString()}`,
+                        type: typeFilter
+                }}
             >
                 <img src={van.imageUrl} />
                 <div className="van-info">
@@ -69,23 +72,23 @@ export default function Vans() {
             <h1>Explore our van options</h1>
             <div className="van-list-filter-buttons">
                 <button 
-                    onClick={() => handleFilterChange({type: "simple"})}
+                    onClick={() => handleFilterChange("type", "simple")}
                     className={`van-type simple ${typeFilter === "simple" ? "selected" : ""}`}
                     >Simple
                 </button>
                 <button
-                    onClick={() => handleFilterChange({type: "rugged"})}
+                    onClick={() => handleFilterChange("type", "rugged")}
                     className={`van-type rugged ${typeFilter === "rugged" ? "selected" : ""}`}
                     >Rugged
                 </button>
                 <button
-                    onClick={() => handleFilterChange({type: "luxury"})}
+                    onClick={() => handleFilterChange("type", "luxury")}
                     className={`van-type luxury ${typeFilter === "luxury" ? "selected" : ""}`}
                     >Luxury
                 </button>
                 {typeFilter && 
                 <button
-                    onClick={() => handleFilterChange({})}
+                    onClick={() => handleFilterChange("type", null)}
                     className='van-type clear-filters'
                     >Clear Filters
                 </button>
