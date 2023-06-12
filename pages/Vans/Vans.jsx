@@ -12,28 +12,39 @@ export default function Vans() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
     const data = useLoaderData()
-    console.log(data)
+    // console.log(data)
+
+    useEffect(() => {
+        setLoading(true)
+        try {
+            setVans(data)
+        } catch (err) {
+            setError(err)
+        } finally {
+            setLoading(false)
+        }
+    }, [])
 
     const typeFilter = searchParams.get("type")
     const filteredVans = typeFilter
         ? vans.filter(van => van.type.toLowerCase() === typeFilter)
         : vans
 
-    useEffect(() => {
-        async function loadVans() {
-            setLoading(true)
-            try {
-                const data = await getVans()
-                setVans(data)
-            } catch (err) {
-                setError(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-    
-            loadVans()
-        }, [])
+    // useEffect(() => {
+    //     async function loadVans() {
+    //         setLoading(true)
+    //         try {
+    //             const data = await getVans()
+    //             setVans(data)
+    //         } catch (err) {
+    //             setError(err)
+    //         } finally {
+    //             setLoading(false)
+    //         }
+    //     }
+    //         loadVans()
+    //     }, [])
+
     const vanElements = filteredVans.map(van => (
         <div key={van.id} className="van-tile">
             <Link
