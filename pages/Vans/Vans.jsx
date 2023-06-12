@@ -8,22 +8,11 @@ export function loader() {
 
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
-    const [vans, setVans] = useState([])
+    // const [vans, setVans] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
-    const data = useLoaderData()
+    const vans = useLoaderData()
     // console.log(data)
-
-    useEffect(() => {
-        setLoading(true)
-        try {
-            setVans(data)
-        } catch (err) {
-            setError(err)
-        } finally {
-            setLoading(false)
-        }
-    }, [])
 
     const typeFilter = searchParams.get("type")
     const filteredVans = typeFilter
