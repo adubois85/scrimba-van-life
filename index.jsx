@@ -34,14 +34,14 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="/vans" element={<Vans />} loader={vansLoader} errorElement={<Error />}/>
             <Route path="/vans/:id" element={<VanDetail />} />
             <Route path='/host' element={<HostLayout />}>
-                <Route index element={<Dashboard />} />
-                <Route path='income' element={<Income />} />
-                <Route path='reviews' element={<Reviews />} />
-                <Route path='vans' element={<HostVans />} />
-                <Route path='vans/:id' element={<HostVanDetail />}>
-                    <Route index element={<HostVanInfo />} />
-                    <Route path='pricing' element={<HostVanPricing />} />
-                    <Route path='photos' element={<HostVanPhotos />} />
+                <Route index element={<Dashboard />} loader={() => {return null}} />
+                <Route path='income' element={<Income />} loader={() => {return null}} />
+                <Route path='reviews' element={<Reviews />} loader={() => {return null}} />
+                <Route path='vans' element={<HostVans />} loader={() => {return null}} />
+                <Route path='vans/:id' element={<HostVanDetail loader={() => {return null}} />}>
+                    <Route index element={<HostVanInfo />} loader={() => {return null}} />
+                    <Route path='pricing' element={<HostVanPricing />} loader={() => {return null}} />
+                    <Route path='photos' element={<HostVanPhotos />} loader={() => {return null}}/>
                 </Route>
             </Route>
             <Route path="*" element={<NotFound />} />
