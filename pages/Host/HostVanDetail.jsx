@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import { useParams, useLoaderData, Link, NavLink, Outlet } from "react-router-dom"
+import React from "react"
+import { useLoaderData, Link, NavLink, Outlet } from "react-router-dom"
 import { getHostVans } from "../../api"
 
 export function loader({ params }) {
@@ -7,16 +7,8 @@ export function loader({ params }) {
 }
 
 export default function HostVanDetail() {
-    // const { id } = useParams()
-    // const [currentVan, setCurrentVan] = useState(null)
-
-    // useEffect(() => {
-    //     fetch(`/api/host/vans/${id}`)
-    //         .then(res => res.json())
-    //         .then(data => setCurrentVan(data.vans))
-    // }, [])
     const currentVan = useLoaderData()
-    console.log(currentVan)
+
     const activeStyles = {
         fontWeight: "bold",
         textDecoration: "underline",

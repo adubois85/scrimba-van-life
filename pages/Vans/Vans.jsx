@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useSearchParams, useLoaderData } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useSearchParams, useLoaderData, Link } from 'react-router-dom'
 import { getVans } from '../../api'
 
 export function loader() {
