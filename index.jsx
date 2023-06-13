@@ -62,18 +62,12 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route
                     path='vans'
                     element={<HostVans />}
-                    loader={async () => {
-                        await requireAuth()
-                        .then(VanDetailLoader)
-                    }}
+                    loader={hostVansLoader}
                 />
                 <Route 
                     path='vans/:id'
                     element={<HostVanDetail />}
-                    loader={async () => {
-                        await requireAuth()
-                        .then(hostVanDetailLoader)
-                    }}
+                    loader={hostVanDetailLoader}
                 >
                     <Route
                         index

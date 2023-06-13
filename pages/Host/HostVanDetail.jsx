@@ -1,8 +1,10 @@
 import React from "react"
 import { useLoaderData, Link, NavLink, Outlet } from "react-router-dom"
 import { getHostVans } from "../../api"
+import { requireAuth } from "../../utils"
 
-export function loader({ params }) {
+export async function loader({ params }) {
+    await requireAuth()
     return getHostVans(params.id)
 }
 
@@ -15,9 +17,6 @@ export default function HostVanDetail() {
         color: "#161616"
     }
 
-    if (!currentVan) {
-        return <h1>Loading...</h1>
-    }
     return (
         <section>
             <Link
