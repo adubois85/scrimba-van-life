@@ -25,7 +25,7 @@ export default function Login() {
     return (
         <div className="login-container">
             <h1>Sign in to your account</h1>
-            {message && <h2 className="red">{message}</h2>}
+            {message && <h3 className="red">{message}</h3>}
             <form onSubmit={handleSubmit} className="login-form">
                 <input
                     name="email"
@@ -45,5 +45,4 @@ export default function Login() {
             </form>
         </div>
     )
-
 }
