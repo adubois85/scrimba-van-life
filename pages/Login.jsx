@@ -20,7 +20,7 @@ export default function Login() {
         loginUser(loginFormData)
         .then(data => console.log(data))
         .catch(err => setError(err))
-        .finally(setStatus("idle"))
+        .finally(() => setStatus("idle"))
     }
 
     function handleChange(e) {
@@ -51,7 +51,11 @@ export default function Login() {
                     placeholder="Password"
                     value={loginFormData.password}
                 />
-                <button disabled={status === "submitting" ? true : false}>Log in</button>
+                <button disabled={status === "submitting"}>
+                    {status === "submitting"
+                        ? "Logging in"
+                        : "Log in"}
+                </button>
             </form>
         </div>
     )
