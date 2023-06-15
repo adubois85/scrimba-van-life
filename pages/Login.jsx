@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, Form } from 'react-router-dom'
 import { loginUser } from "../api"
 
 export function loader({ request }) {
     return new URL(request.url).searchParams.get("message")
+}
+
+export async function action() {
+    console.log("This is the action function")
+    return null
 }
 
 export default function Login() {
@@ -13,15 +18,18 @@ export default function Login() {
 
     const message = useLoaderData()
 
+    /* Keeping this around for future reference
+    
     function handleSubmit(e) {
         e.preventDefault()
         setStatus("submitting")
         setError(null)
         loginUser(loginFormData)
-        .then(data => console.log(data))
-        .catch(err => setError(err))
-        .finally(() => setStatus("idle"))
+            .then(data => console.log(data))
+            .catch(err => setError(err))
+            .finally(() => setStatus("idle"))
     }
+    */
 
     function handleChange(e) {
         const { name, value } = e.target
@@ -36,7 +44,9 @@ export default function Login() {
             <h1>Sign in to your account</h1>
             {message && <h3 className='red'>{message}</h3>}
             {error && <h3 className='red'>{error.message}</h3>}
-            <form onSubmit={handleSubmit} className="login-form">
+            <Form 
+                className="login-form"
+                method='post'>
                 <input
                     name="email"
                     onChange={handleChange}
@@ -56,7 +66,7 @@ export default function Login() {
                         ? "Logging in"
                         : "Log in"}
                 </button>
-            </form>
+            </Form>
         </div>
     )
 }
