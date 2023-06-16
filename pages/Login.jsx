@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useLoaderData, redirect, Form } from 'react-router-dom'
+import React from 'react'
+import { useLoaderData, useActionData, redirect, Form } from 'react-router-dom'
 import { loginUser } from "../api"
 
 export function loader({ request }) {
@@ -10,16 +10,18 @@ export async function action({ request }) {
     const formData = await request.formData()
     const email = formData.get("email")
     const password = formData.get("password")
-    const data = await loginUser({ email, password })
-    localStorage.setItem("isLoggedIn", true)
-    return redirect("/host")
+    try{
+        await loginUser({ email, password })
+        localStorage.setItem("isLoggedIn", true)
+        return redirect("/host")
+    } catch(err) {
+        return err
+    }
 }
 
 export default function Login() {
-    const [status, setStatus] = useState("idle")
-    const [error, setError] = useState(null)
-
     const message = useLoaderData()
+    const error = useActionData()
 
     /* Keeping this around for future reference
 
