@@ -10,12 +10,12 @@ export async function action({ request }) {
     const formData = await request.formData()
     const email = formData.get("email")
     const password = formData.get("password")
-    console.log(email, password)
+    const data = await loginUser({ email, password })
+    console.log(data)
     return null
 }
 
 export default function Login() {
-    const [loginFormData, setLoginFormData] = useState({ email: "", password: "" })
     const [status, setStatus] = useState("idle")
     const [error, setError] = useState(null)
 
@@ -32,8 +32,7 @@ export default function Login() {
             .catch(err => setError(err))
             .finally(() => setStatus("idle"))
     }
-    */
-
+    
     function handleChange(e) {
         const { name, value } = e.target
         setLoginFormData(prev => ({
@@ -41,6 +40,7 @@ export default function Login() {
             [name]: value
         }))
     }
+    */
 
     return (
         <div className="login-container">
@@ -52,17 +52,13 @@ export default function Login() {
                 method='post'>
                 <input
                     name="email"
-                    onChange={handleChange}
                     type="email"
                     placeholder="Email address"
-                    value={loginFormData.email}
                 />
                 <input
                     name="password"
-                    onChange={handleChange}
                     type="password"
                     placeholder="Password"
-                    value={loginFormData.password}
                 />
                 <button disabled={status === "submitting"}>
                     {status === "submitting"
