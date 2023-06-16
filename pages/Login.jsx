@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { useLoaderData, Form } from 'react-router-dom'
+import { useLoaderData, redirect, Form } from 'react-router-dom'
 import { loginUser } from "../api"
-import { redirect } from 'react-router-dom'
 
 export function loader({ request }) {
     return new URL(request.url).searchParams.get("message")
