@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useLoaderData, Form } from 'react-router-dom'
 import { loginUser } from "../api"
+import { redirect } from 'react-router-dom'
 
 export function loader({ request }) {
     return new URL(request.url).searchParams.get("message")
@@ -12,8 +13,7 @@ export async function action({ request }) {
     const password = formData.get("password")
     const data = await loginUser({ email, password })
     localStorage.setItem("isLoggedIn", true)
-    // console.log(data)
-    return null
+    return redirect("/host")
 }
 
 export default function Login() {
