@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLoaderData, useActionData, redirect, Form } from 'react-router-dom'
+import { useLoaderData, useActionData, useNavigation, redirect, Form } from 'react-router-dom'
 import { loginUser } from "../api"
 
 export function loader({ request }) {
@@ -22,6 +22,7 @@ export async function action({ request }) {
 export default function Login() {
     const message = useLoaderData()
     const error = useActionData()
+    const navigation = useNavigation()
 
     /* Keeping this around for future reference
 
@@ -62,8 +63,8 @@ export default function Login() {
                     type="password"
                     placeholder="Password"
                 />
-                <button disabled={status === "submitting"}>
-                    {status === "submitting"
+                <button disabled={navigation.state === "submitting"}>
+                    {navigation.state === "submitting"
                         ? "Logging in"
                         : "Log in"}
                 </button>
