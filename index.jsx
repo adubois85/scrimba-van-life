@@ -4,7 +4,7 @@ import {
     RouterProvider,
     createBrowserRouter,
     createRoutesFromElements,
-    Route 
+    Route
 } from 'react-router-dom'
 import Layout from './components/Layout';
 import Home from './pages/Home'
@@ -52,17 +52,17 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route
                     index
                     element={<Dashboard />}
-                    loader={async () => await requireAuth()}
+                    loader={async ({ request }) => await requireAuth(request)}
                 />
                 <Route
                     path='income'
                     element={<Income />}
-                    loader={async () => await requireAuth()}
+                    loader={async ({ request }) => await requireAuth(request)}
                 />
                 <Route
                     path='reviews'
                     element={<Reviews />}
-                    loader={async () => await requireAuth()}
+                    loader={async ({ request }) => await requireAuth(request)}
                 />
                 <Route
                     path='vans'
@@ -77,17 +77,17 @@ const router = createBrowserRouter(createRoutesFromElements(
                     <Route
                         index
                         element={<HostVanInfo />}
-                        loader={async () => await requireAuth()}
+                        loader={async ({ request }) => await requireAuth(request)}
                     />
                     <Route
                         path='pricing'
                         element={<HostVanPricing />}
-                        loader={async () => await requireAuth()}
+                        loader={async ({ request }) => await requireAuth(request)}
                     />
                     <Route
                         path='photos'
                         element={<HostVanPhotos />}
-                        loader={async () => await requireAuth()}
+                        loader={async ({ request }) => await requireAuth(request)}
                     />
                 </Route>
             </Route>
