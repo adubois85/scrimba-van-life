@@ -1,39 +1,18 @@
 import React, { useState } from 'react'
-import { useSearchParams, useLoaderData, Link } from 'react-router-dom'
+import { defer, useSearchParams, useLoaderData, Link } from 'react-router-dom'
 import { getVans } from '../../api'
+import { Await } from 'react-router-dom'
 
 export function loader() {
-    return getVans()
+    return defer ({vans: getVans()})
 }
 
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [error, setError] = useState(null)
-    const vans = useLoaderData()
+    const vans = useLoaderData().vans
 
     const typeFilter = searchParams.get("type")
-    const filteredVans = typeFilter
-        ? vans.filter(van => van.type.toLowerCase() === typeFilter)
-        : vans
-
-    const vanElements = filteredVans.map(van => (
-        <div key={van.id} className="van-tile">
-            <Link
-                to={van.id}
-                state={{ 
-                        search: `?${searchParams.toString()}`,
-                        type: typeFilter
-                }}
-            >
-                <img src={van.imageUrl} />
-                <div className="van-info">
-                    <h3>{van.name}</h3>
-                    <p>${van.price}<span>/day</span></p>
-                </div>
-                <i className={`van-type ${van.type} selected`}>{van.type}</i>
-            </Link>
-        </div>
-    ))
 
     function handleFilterChange(key, value) {
         setSearchParams(prevParams => {
@@ -76,9 +55,37 @@ export default function Vans() {
                 </button>
                 }
             </div>
-            <div className="van-list">
-                {vanElements}
-            </div>
+            <Await resolve={vans}>
+                {(loadedVans) => {
+                        const filteredVans = typeFilter
+                        ? loadedVans.filter(van => van.type.toLowerCase() === typeFilter)
+                        : loadedVans
+                
+                    const vanElements = filteredVans.map(van => (
+                        <div key={van.id} className="van-tile">
+                            <Link
+                                to={van.id}
+                                state={{ 
+                                        search: `?${searchParams.toString()}`,
+                                        type: typeFilter
+                                }}
+                            >
+                                <img src={van.imageUrl} />
+                                <div className="van-info">
+                                    <h3>{van.name}</h3>
+                                    <p>${van.price}<span>/day</span></p>
+                                </div>
+                                <i className={`van-type ${van.type} selected`}>{van.type}</i>
+                            </Link>
+                        </div>
+                    ))
+                    return (
+                        <div className="van-list">
+                            {vanElements}
+                        </div>
+                    )
+                }}
+            </Await>
         </div>
     )
 }
