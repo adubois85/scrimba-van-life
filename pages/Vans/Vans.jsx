@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import { defer, useSearchParams, useLoaderData, Link } from 'react-router-dom'
+import React, { useState, Suspense } from 'react'
+import { defer, Await, useSearchParams, useLoaderData, Link } from 'react-router-dom'
 import { getVans } from '../../api'
-import { Await } from 'react-router-dom'
 
 export function loader() {
     return defer ({vans: getVans()})
@@ -86,9 +85,11 @@ export default function Vans() {
                 </button>
                 }
             </div>
-            <Await resolve={vans}>
-                {renderVanElements}
-            </Await>
+            <Suspense fallback={<h1>Loading Vans...</h1>}>
+                <Await resolve={vans}>
+                    {renderVanElements}
+                </Await>
+            </Suspense>
         </div>
     )
 }
