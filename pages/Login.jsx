@@ -10,7 +10,7 @@ export async function action({ request }) {
     const formData = await request.formData()
     const email = formData.get("email")
     const password = formData.get("password")
-    const path = new URL(request.url).searchParams.get("?redirectTo") || "/host"
+    const path = new URL(request.url).searchParams.get("redirectTo") || "/host"
     try{
         await loginUser({ email, password })
         localStorage.setItem("isLoggedIn", true)
