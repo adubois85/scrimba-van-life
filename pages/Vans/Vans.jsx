@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react'
+import React, { Suspense } from 'react'
 import { defer, Await, useSearchParams, useLoaderData, Link } from 'react-router-dom'
 import { getVans } from '../../api'
 
@@ -8,7 +8,6 @@ export function loader() {
 
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
-    const [error, setError] = useState(null)
     const vans = useLoaderData().vans
 
     const typeFilter = searchParams.get("type")
@@ -22,9 +21,6 @@ export default function Vans() {
             }
             return prevParams
         })
-    }    
-    if (error) {
-        return <h1>There was an error: {error.message}</h1>
     }
 
     function renderVanElements (loadedVans) {
