@@ -13,7 +13,7 @@ export default function HostVans() {
     console.log(vans)
 
     function renderHostVanEls(vans) {
-        const hostVansEls = vans.map(van => (
+        const hostVansEls =  vans.map(van => (
             <Link
                 to={van.id}
                 key={van.id}
